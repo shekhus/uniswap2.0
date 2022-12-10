@@ -25,3 +25,7 @@ styles/global.css =import font
 to run  Desktop\uniswap2.0\uniswap2.0> npm run dev  
 -npm run dev 
 http://localhost:3000
+
+import { NavBar } from "../Components/index";
+
+<NavBar/>
