@@ -29,3 +29,7 @@ http://localhost:3000
 import { NavBar } from "../Components/index";
 
 <NavBar/>
+
+NaBar moule.css 
+
+Model section to connect with metamask and other wallets 
