@@ -32,4 +32,10 @@ import { NavBar } from "../Components/index";
 
 NavBar moule.css 
 
-Model section to connect with metamask and other wallets 
+Model section to connect with metamask and other wallets
+
+TokenList
+
+make necessary changes in \pages\index.js
+
+HeroSection jsx & CSS with media control 

@@ -73,7 +73,7 @@ const [openTokenBox, setOpenTokenBox] = useState(false);
             </div>
 
             {/* //TOTENLIST COMPONENT */}
-      {!openTokenBox && (
+      {openTokenBox && (
         <TokenList tokenDate="{tokenData}" setOpenTokenBox={setOpenTokenBox} />
       )}
          </div>
