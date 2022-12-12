@@ -29,13 +29,19 @@ http://localhost:3000
 import { NavBar } from "../Components/index";
 
 <NavBar/>
-
 NavBar moule.css 
 
 Model section to connect with metamask and other wallets
+const Model = ({ setOpenModel, connectWallet }) => {
 
-TokenList
+TokenList ({ tokenDate, setOpenTokenBox }) => { } 
 
 make necessary changes in \pages\index.js
 
 HeroSection jsx & CSS with media control 
+const HeroSection = ({accounts,tokenData}) => { } 
+
+add Token folder to Components 
+Token jsx & CSS 
+const Token = ({ setOpenSetting }) => { }
+.Token{ ...} 
