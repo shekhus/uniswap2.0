@@ -30,6 +30,6 @@ import { NavBar } from "../Components/index";
 
 <NavBar/>
 
-NaBar moule.css 
+NavBar moule.css 
 
 Model section to connect with metamask and other wallets 
