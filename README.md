@@ -46,3 +46,9 @@ const Token = ({ setOpenSetting }) => { }
 .Token{ ...} 
 
 Toggle switch for SWAP Settings
+const Toggle = ({ label }) => { }
+
+SearchToken 
+const SearchToken = ({ openToken, tokens, tokenData }) => { }
+
+#fd0151;
