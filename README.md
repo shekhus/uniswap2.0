@@ -27,7 +27,6 @@ to run  Desktop\uniswap2.0\uniswap2.0> npm run dev
 http://localhost:3000
 
 import { NavBar } from "../Components/index";
-
 <NavBar/>
 NavBar moule.css 
 
@@ -45,3 +44,5 @@ add Token folder to Components
 Token jsx & CSS 
 const Token = ({ setOpenSetting }) => { }
 .Token{ ...} 
+
+Toggle switch for SWAP Settings
