@@ -52,3 +52,4 @@ SearchToken
 const SearchToken = ({ openToken, tokens, tokenData }) => { }
 
 #fd0151;
+

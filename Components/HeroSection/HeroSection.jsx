@@ -44,7 +44,7 @@ const HeroSection = ({accounts,tokenData}) => {
 
         <div className={Style.HeroSection_box_input}>
         <input type="text" placeholder="0" />
-        <button onClick={() => OpenToken(true)}>
+        <button onClick={() => setOpenToken(true)}>
           <Image
             src={images.image || images.etherlogo}
             width={20}
@@ -59,7 +59,7 @@ const HeroSection = ({accounts,tokenData}) => {
 
       <div className={Style.HeroSection_box_input}>
       <input type="text" placeholder="0" />
-      <button onClick={() => openTokensTwo(true)}>
+      <button onClick={() => setOpenTokensTwo(true)}>
         <Image
           src={tokenTwo.image || images.etherlogo}
           width={20}
@@ -87,7 +87,7 @@ const HeroSection = ({accounts,tokenData}) => {
 
     {openSetting && <Token setOpenSetting={setOpenSetting} />}
 
-    {!openToken && (
+    {openToken && (
       <SearchToken
         openToken={setOpenToken}
         tokens={setTokenOne}
@@ -101,6 +101,7 @@ const HeroSection = ({accounts,tokenData}) => {
         tokenData={tokenData}
       />
     )} 
+    
     </div>
  )
 };
