@@ -53,3 +53,15 @@ const SearchToken = ({ openToken, tokens, tokenData }) => { }
 
 #fd0151;
 
+SMART CONTRACT DEVELOPEMENT
+npx hardhat
+yarn add --save-dev "hardhat@^2.12.4 
+yarn add @nomicfoundation/hardhat-toolbox@^2.0.0
+
+yarn add @uniswap/v3-periphery
+
+yarn add @openzeppelin/contracts
+
+yarn add ether
+
+yarn add web3modal
