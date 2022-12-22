@@ -65,3 +65,11 @@ yarn add @openzeppelin/contracts
 yarn add ether
 
 yarn add web3modal
+
+SwapToken.sol
+
+IWETH.sol
+
+SingleSwap.js write tests 
+
+SwapMultiHop.sol
