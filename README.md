@@ -73,3 +73,7 @@ IWETH.sol
 SingleSwap.js write tests 
 
 SwapMultiHop.sol
+
+SwapMultiHop.js
+
+npx hardhat test test/SwapMultiHop.js
