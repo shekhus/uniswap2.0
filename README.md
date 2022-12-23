@@ -77,3 +77,43 @@ SwapMultiHop.sol
 SwapMultiHop.js
 
 npx hardhat test test/SwapMultiHop.js
+
+Add  ERC20Boo.sol
+
+ERC20Life.sol
+
+Build an environment to deploy all  5 contracts 
+
+run local blockchain - npx hardhat node 
+npx hardhat node 
+
+new window- 
+npx hardhat run scripts/deploy.js --network localhost
+
+drag from artifacts\contracts all json files to Context folder  
+
+constants.js - import files and Abi for all contract files with address.
+
+create new folder & file 
+Utils\appFeatures.js
+add API feature 
+
+//FETCHING CONTRACT------------------------
+
+//BOO TOKEN FETCHING
+export const fetchBooContract = (signerOrProvider) =>
+  new ethers.Contract(BooTokenAddress, BooTokenABI, signerOrProvider);
+
+//CONNECTING With BOO TOKEN CONTRACT
+export const connectingWithBooToken = async () => {
+  try {
+    const web3modal = new Web3Modal();
+    const connection = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+    const contract = fetchBooContract(signer);
+    return contract;
+  } catch (error) {
+    console.log(error);
+  }
+};
