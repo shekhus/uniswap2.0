@@ -74,7 +74,7 @@ SingleSwap.js write tests
 
 SwapMultiHop.sol
 
-SwapMultiHop.js
+Test  - SwapMultiHop.js
 
 npx hardhat test test/SwapMultiHop.js
 
@@ -82,13 +82,21 @@ Add  ERC20Boo.sol
 
 ERC20Life.sol
 
+
 Build an environment to deploy all  5 contracts 
 
 run local blockchain - npx hardhat node 
 npx hardhat node 
 
 new window- 
+npx hardhat clean 
 npx hardhat run scripts/deploy.js --network localhost
+
+//Connect contracts with frontend
+create Contet folder--add files constants.js & SwapContext.js 
+
+//Build Environment for deployment 
+scripts\deploy.js -make changes to deploy all contracts 
 
 drag from artifacts\contracts all json files to Context folder  
 
@@ -117,3 +125,15 @@ export const connectingWithBooToken = async () => {
     console.log(error);
   }
 };
+
+
+swapContext.js
+App.js ===.
+import { SwapTokenContextProvider } from '../Context/SwapContext';
+const MyApp = ({ Component, pageProps }) => 
+<div>
+<SwapTokenContextProvider>
+<NavBar/>
+<Component {...pageProps} />
+</SwapTokenContextProvider>
+</div>

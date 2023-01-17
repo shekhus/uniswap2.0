@@ -25,6 +25,7 @@ describe("SingleSwapToken", () => {
   });
 
   it("swapExactInputSingle", async () => {
+        // Amount of WETH to be used in the swap
     const amountIn = 10n ** 18n;
 
     // Deposit WETH
@@ -47,7 +48,9 @@ describe("SingleSwapToken", () => {
     const daiAmountOut = 100n * 10n ** 18n;
 
     //DEPOSIT WETH
+    //It deposit WETH by calling the deposit() function on the weth contract, with a value of 10^18.
     await weth.deposit({ value: wethAmountInMax });
+    //It approves the SingleSwapToken contract to spend the deposited WETH by calling approve() function on the weth contract
     await weth.approve(singleSwapToken.address, wethAmountInMax);
 
     //SWAP

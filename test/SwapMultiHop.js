@@ -37,18 +37,22 @@ describe("SwapMultiHop", () => {
   });
 
   it("swapExactOutputMultihop", async () => {
+    // Define the amount of WETH to deposit
     const wethAmountInMax = 10n ** 18n;
+    // Define the desired amount of DAI to receive in return
     const daiAmountOut = 100n * 10n ** 18n;
 
-    //DEPOSIT WETH
+      // Deposit WETH
     await weth.deposit({ value: wethAmountInMax });
+    // Allow the swap contract to access the deposited WETH
     await weth.approve(swapMultiHop.address, wethAmountInMax);
 
-    //SWAP
+    // Perform the swap
     await swapMultiHop.swapExactOutputMultihop(daiAmountOut, wethAmountInMax);
+    // Log the address of the user
     console.log(accounts[0].address);
-    // console.log(accounts[1].address);
+    // Log the balance of DAI for that user
     console.log("Dai balance", await dai.balanceOf(accounts[0].address));
-    // console.log("Dai balance", await dai.balanceOf(accounts[1].address));
+
   });
 });

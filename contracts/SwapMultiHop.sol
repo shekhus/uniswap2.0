@@ -51,6 +51,7 @@ contract SwapMultiHop{
             recipient: msg.sender,
             deadline: block.timestamp,
             amountOut: amountOut,
+            //These lines specify the recipient of the swap, the deadline for the swap and the maximum amount of the input token the user wants to receive.
             amountInMaximum: amountInMaximum
         });
 

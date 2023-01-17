@@ -19,14 +19,17 @@ contract SingleSwapToken {
         external
         returns (uint amountOut)
     {
+        //It first calls the safeTransferFrom function from the TransferHelper library to transfer the input amount from the msg.sender to the contract address.
         TransferHelper.safeTransferFrom(
             WETH9,
             msg.sender,
             address(this),
             amountIn
         );
+        // it calls the safeApprove function from the TransferHelper library to approve the swapRouter contract to transfer the amountIn
         TransferHelper.safeApprove(WETH9, address(swapRouter), amountIn);
 
+//Then it creates an instance of the ExactInputSingleParams struct from the ISwapRouter library and populates it with the token addresses, fee, recipient, deadline, and amountIn, before calling the exactInputSingle function on the swapRouter contract.
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
         .ExactInputSingleParams({
             tokenIn: WETH9,
@@ -65,8 +68,13 @@ function swapExactOutputSingle(uint amountOut, uint amountInMaximum)external   r
 
         amountIn = swapRouter.exactOutputSingle(params);
 
+//The last bit of code inside the function check if amountIn is less than amountInMaximum, if so it calls the safeApprove function to approve 0 transfer and calls the safeTransfer function to transfer the remaining amount to msg.sender.
+
+ // Check if the received input amount is less than the maximum allowed
         if (amountIn < amountInMaximum) {
+        // Approve 0 transfer for the remaining amount
             TransferHelper.safeApprove(WETH9, address(swapRouter), 0);
+        // Transfer the remaining amount back to msg.sender
             TransferHelper.safeTransfer(
                 WETH9,
                 msg.sender,
