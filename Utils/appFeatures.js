@@ -51,11 +51,17 @@ export const fetchBooContract = (signerOrProvider) =>
 //CONNECTING With BOO TOKEN CONTRACT
 export const connectingWithBooToken = async () => {
   try {
+    //The function starts by creating a new instance of the Web3Modal library, which provides a user interface to connect to a web3 provider.
     const web3modal = new Web3Modal();
+    //The next line uses the connect() method of the Web3Modal instance to open the user interface and wait for the user to connect to a web3 provider.
     const connection = await web3modal.connect();
+    //Once a connection is established, the code creates a new instance of the ethers.providers.Web3Provider class, passing in the connection object as an argument.
     const provider = new ethers.providers.Web3Provider(connection);
+    //The code then calls the getSigner() method on the provider to get the user's signer object, which is used to sign transactions.
     const signer = provider.getSigner();
+    //The function then calls the fetchBooContract function and pass the signer object as an argument.
     const contract = fetchBooContract(signer);
+    //Finally, the contract object is returned to the caller.
     return contract;
   } catch (error) {
     console.log(error);

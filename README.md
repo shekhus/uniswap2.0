@@ -3,10 +3,10 @@ npx create-next-app@latest
 delete pages/api folder 
 delete index page content 
 rafce =Home 
-_app.js =make arrow function 
+===_app.js =make arrow function 
 delete Home.module
 
-create folders 
+===create folders 
  -Components
     -HeroSection 
         -HeroSection.jsx =rafce
@@ -19,29 +19,30 @@ create folders
     index.js
 delete eslint 
 
-styles/global.css =import font 
+===styles/global.css =import font 
 
 
 to run  Desktop\uniswap2.0\uniswap2.0> npm run dev  
 -npm run dev 
 http://localhost:3000
 
+===NavBar 
 import { NavBar } from "../Components/index";
 <NavBar/>
 NavBar moule.css 
 
-Model section to connect with metamask and other wallets
+===Model section to connect with metamask and other wallets
 const Model = ({ setOpenModel, connectWallet }) => {
 
-TokenList ({ tokenDate, setOpenTokenBox }) => { } 
+===TokenList ({ tokenDate, setOpenTokenBox }) => { } 
 
 make necessary changes in \pages\index.js
 
-HeroSection jsx & CSS with media control 
+===HeroSection jsx & CSS with media control 
 const HeroSection = ({accounts,tokenData}) => { } 
 
 add Token folder to Components 
-Token jsx & CSS 
+===Token jsx & CSS 
 const Token = ({ setOpenSetting }) => { }
 .Token{ ...} 
 
@@ -53,7 +54,7 @@ const SearchToken = ({ openToken, tokens, tokenData }) => { }
 
 #fd0151;
 
-SMART CONTRACT DEVELOPEMENT
+===SMART CONTRACT DEVELOPEMENT===
 npx hardhat
 yarn add --save-dev "hardhat@^2.12.4 
 yarn add @nomicfoundation/hardhat-toolbox@^2.0.0
@@ -66,21 +67,21 @@ yarn add ether
 
 yarn add web3modal
 
-SwapToken.sol
+===SwapToken.sol
 
-IWETH.sol
+===IWETH.sol
 
-SingleSwap.js write tests 
+===SingleSwap.js write tests 
 
-SwapMultiHop.sol
+===SwapMultiHop.sol
 
 Test  - SwapMultiHop.js
 
 npx hardhat test test/SwapMultiHop.js
 
-Add  ERC20Boo.sol
-
-ERC20Life.sol
+===Add  ERC20Boo.sol
+===ERC20.json
+===ERC20Life.sol
 
 
 Build an environment to deploy all  5 contracts 
@@ -93,22 +94,21 @@ npx hardhat clean
 npx hardhat run scripts/deploy.js --network localhost
 
 //Connect contracts with frontend
-create Contet folder--add files constants.js & SwapContext.js 
+===create Contet folder--add files constants.js & SwapContext.js 
 
 //Build Environment for deployment 
-scripts\deploy.js -make changes to deploy all contracts 
+===scripts\deploy.js -make changes to deploy all contracts 
 
 drag from artifacts\contracts all json files to Context folder  
 
-constants.js - import files and Abi for all contract files with address.
+===constants.js - import files and Abi for all contract files with address.
 
-create new folder & file 
+===create new folder & file 
 Utils\appFeatures.js
+//CHECK IF WALLET IS CONNECT
+//CONNECT WALLET
 add API feature 
-
-//FETCHING CONTRACT------------------------
-
-//BOO TOKEN FETCHING
+//BOO TOKEN FETCHING 
 export const fetchBooContract = (signerOrProvider) =>
   new ethers.Contract(BooTokenAddress, BooTokenABI, signerOrProvider);
 
@@ -125,10 +125,20 @@ export const connectingWithBooToken = async () => {
     console.log(error);
   }
 };
+Similarly Token Fetching and Connection with Life,SingleSwapToken, (multihop later) 
 
 
-swapContext.js
-App.js ===.
+
+=== swapContext.js
+import checkIfWalletConnected,connectWallet,connectingWithSingleSwapToken,
+  connectingWithIWTHToken,connectingWithDAIToken
+    return (
+    <SwapTokenContext.Provider
+      value={{singleSwapToken,...      }}
+      >{children}
+    </SwapTokenContext.Provider>
+
+===App.js ===.
 import { SwapTokenContextProvider } from '../Context/SwapContext';
 const MyApp = ({ Component, pageProps }) => 
 <div>
@@ -137,3 +147,13 @@ const MyApp = ({ Component, pageProps }) =>
 <Component {...pageProps} />
 </SwapTokenContextProvider>
 </div>
+
+
+=== swapContext.js
+use state and hooks 
+add token address (temporary)
+FetchUserData (portfolio, balance....) ,write a function GET USER ACCOUNT,CREATE PROVIDER,CHECK Balance,GET NETWORK,ALL TOKEN BALANCE AND DATA,GETTING CONTRACT, BALANCE OF TOKEN,GET NAME AND SYMBOL
+ to fetch data in browser 
+ useEffect(() => {
+    fetchingData();
+  }, []);
