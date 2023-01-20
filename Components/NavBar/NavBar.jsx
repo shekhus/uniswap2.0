@@ -7,7 +7,12 @@ import Style from "./NavBar.module.css";
 import images from "../../assets";
 import { Model, TokenList } from "../index";
 
+//CONTEXT
+import { SwapTokenContext } from "../../Context/SwapContext";
+
 const NavBar = () => {
+  const { ether, account, networkConnect} =
+  useContext(SwapTokenContext);
   const menuItems =[
 {
   name : "Swap",
@@ -25,7 +30,7 @@ const NavBar = () => {
 //UseState 
 const [openModel, setOpenModel] = useState(false);
 const [openTokenBox, setOpenTokenBox] = useState(false);
-const [account, setaccount] = useState(false)
+// const [account, setaccount] = useState(false)
 
   return (
     <div className={Style.NavBar}>
@@ -65,11 +70,11 @@ const [account, setaccount] = useState(false)
        </div>
                 {
                   account?(
-                   <button onClick={() => setOpenModel(true)}>Connect</button>
-                  ) : (
-                    
-          <button onClick={() => setOpenTokenBox(true)}>0xhdcvbce....</button>
-                  )
+                <button onClick={() => setOpenTokenBox(true)}>{account.slice(0, 6) +'....'+ account.slice(38, 42)}</button>
+//{el.accountAddress.slice(0, 6) +'....'+ el.accountAddress.slice(38, 42) }
+                                   ) : (
+                 <button onClick={() => setOpenModel(true)}>Connect</button>
+                      )
                 }
 
          {openModel && (

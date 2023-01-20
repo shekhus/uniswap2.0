@@ -157,3 +157,6 @@ FetchUserData (portfolio, balance....) ,write a function GET USER ACCOUNT,CREATE
  useEffect(() => {
     fetchingData();
   }, []);
+
+  ===NavBar===
+  import /Context/SwapContext and make changes to display current account 
