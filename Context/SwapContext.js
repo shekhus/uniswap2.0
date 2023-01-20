@@ -50,9 +50,9 @@ export const SwapTokenContextProvider = ({ children }) => {
    //IWETH 
     // "0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4",
     //BOO
-    "0xbe18A1B61ceaF59aEB6A9bC81AB4FB87D56Ba167",
+    "0x666432Ccb747B2220875cE185f487Ed53677faC9",
     //lifeToken
-    "0x25C0a2F0A077F537Bd11897F04946794c2f6f1Ef",
+    "0xeC1BB74f5799811c0c1Bff94Ef76Fb40abccbE4a",
     // "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
     // "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
     // "0x6B175474E89094C44Da98b954EedeAC495271d0F",
@@ -75,26 +75,36 @@ export const SwapTokenContextProvider = ({ children }) => {
       const provider = new ethers.providers.Web3Provider(connection);
       //CHECK Balance
       const balance = await provider.getBalance(userAccount);
+      //convert balance into readable format
       const convertBal = BigNumber.from(balance).toString();
+      //converts balance into ethers 
       const ethValue = ethers.utils.formatEther(convertBal);
-      setEther(ethValue);
+      // console.log(ethValue)
+      // setEther(ethValue);
 
       //GET NETWORK
       const newtork = await provider.getNetwork();
       setNetworkConnect(newtork.name);
-      console.log(newtork);
+      // console.log(newtork);
 
       // Get balance and data of all tokens
       addToken.map(async (el, i) => {
       // Get the contract
+      //el variable, which is the current element in the addToken array, as the address of the contract, ERC20 as the ABI for the contract, and provider as the provider for the contract to provide name & symbol . 
        const contract = new ethers.Contract(el, ERC20, provider);
+      //  console.log(contract);
+
       // Get the balance of the token for the user
         const userBalance = await contract.balanceOf(userAccount);
         const tokenLeft = BigNumber.from(userBalance).toString();
         const convertTokenBal = ethers.utils.formatEther(tokenLeft);
+        console.log(convertTokenBal)
+
         // GET NAME AND SYMBOL
         const symbol = await contract.symbol();
         const name = await contract.name();
+        console.log(name)
+
 
     // Add the token data to the tokenData state
         tokenData.push({
@@ -276,6 +286,7 @@ export const SwapTokenContextProvider = ({ children }) => {
   return (
     <SwapTokenContext.Provider
       value={{ 
+        account,
         singleSwapToken,
         // connectWallet,
         // getPrice,
