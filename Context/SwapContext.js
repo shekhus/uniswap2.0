@@ -18,11 +18,6 @@ import {
   connectingWithMultiHopContract,
 } from "../Utils/appFeatures";
 
-// import { getPrice } from "../Utils/fetchingPrice";
-// import { swapUpdatePrice } from "../Utils/swapUpdatePrice";
-// import { addLiquidityExternal } from "../Utils/addLiquidity";
-// import { getLiquidityData } from "../Utils/checkLiquidity";
-// import { connectingWithPoolContract } from "../Utils/deployPool";
 
 import { IWETHABI } from "./constants";
 import ERC20 from "./ERC20.json";
@@ -98,12 +93,12 @@ export const SwapTokenContextProvider = ({ children }) => {
         const userBalance = await contract.balanceOf(userAccount);
         const tokenLeft = BigNumber.from(userBalance).toString();
         const convertTokenBal = ethers.utils.formatEther(tokenLeft);
-        console.log(convertTokenBal)
+        // console.log(convertTokenBal)
 
         // GET NAME AND SYMBOL
         const symbol = await contract.symbol();
         const name = await contract.name();
-        console.log(name)
+        // console.log(name)
 
 
     // Add the token data to the tokenData state
@@ -120,127 +115,23 @@ export const SwapTokenContextProvider = ({ children }) => {
       }
     };
 
-      // //GET LIQUDITY
-  //     const userStorageData = await connectingWithUserStorageContract();
-  //     const userLiquidity = await userStorageData.getAllTransactions();
-  //     console.log(userLiquidity);
-
-  //     userLiquidity.map(async (el, i) => {
-  //       const liquidityData = await getLiquidityData(
-  //         el.poolAddress,
-  //         el.tokenAddress0,
-  //         el.tokenAddress1
-  //       );
-
-  //       getAllLiquidity.push(liquidityData);
-  //       console.log(getAllLiquidity);
-  //     });
-
-  //     const URL = "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3";
-
-  //     const query = `
-  //     {
-  //       tokens(orderBy: volumeUSD, orderDirection: desc, first:20){
-  //         id
-  //         name
-  //         symbol
-  //          decimals
-  //         volume
-  //         volumeUSD
-  //          totalSupply
-  //          feesUSD
-  //          txCount
-  //          poolCount
-  //          totalValueLockedUSD
-  //          totalValueLocked
-  //          derivedETH
-  //       }
-  //     }
-  //     `;
-
-  //     const axiosData = await axios.post(URL, { query: query });
-  //     console.log(axiosData.data.data.tokens);
-  //     setTopTokensList(axiosData.data.data.tokens);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   // Call the fetchingData function when the component is rendered
   useEffect(() => {
     fetchingData();
   }, []);
+// console.log(tokenData)
+  
 
-  // //CREATE AND ADD LIQUIDITY
-  // const createLiquidityAndPool = async ({
-  //   tokenAddress0,
-  //   tokenAddress1,
-  //   fee,
-  //   tokenPrice1,
-  //   tokenPrice2,
-  //   slippage,
-  //   deadline,
-  //   tokenAmmountOne,
-  //   tokenAmmountTwo,
-  // }) => {
-  //   try {
-  //     console.log(
-  //       tokenAddress0,
-  //       tokenAddress1,
-  //       fee,
-  //       tokenPrice1,
-  //       tokenPrice2,
-  //       slippage,
-  //       deadline,
-  //       tokenAmmountOne,
-  //       tokenAmmountTwo
-  //     );
-  //     //CREATE POOL
-  //     const createPool = await connectingWithPoolContract(
-  //       tokenAddress0,
-  //       tokenAddress1,
-  //       fee,
-  //       tokenPrice1,
-  //       tokenPrice2,
-  //       {
-  //         gasLimit: 500000,
-  //       }
-  //     );
-
-  //     const poolAddress = createPool;
-  //     console.log(poolAddress);
-
-  //     //CREATE LIQUIDITY
-  //     const info = await addLiquidityExternal(
-  //       tokenAddress0,
-  //       tokenAddress1,
-  //       poolAddress,
-  //       fee,
-  //       tokenAmmountOne,
-  //       tokenAmmountTwo
-  //     );
-  //     console.log(info);
-
-  //     //ADD DATA
-  //     const userStorageData = await connectingWithUserStorageContract();
-
-  //     const userLiqudity = await userStorageData.addToBlockchain(
-  //       poolAddress,
-  //       tokenAddress0,
-  //       tokenAddress1
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  //SINGL SWAP TOKEN
-  const singleSwapToken = async ({ token1, token2, swapAmount }) => {
-    console.log(
-      token1.tokenAddress.tokenAddress,
-      token2.tokenAddress.tokenAddress,
-      swapAmount
-    );
+  // SINGLE SWAP TOKEN
+  const singleSwapToken = async () => {
+    // console.log(
+    //   //"token1" is an object that contains a property "tokenAddress" which in turn contains another property "tokenAddress" that holds the address of the first token
+    //   // token1.tokenAddress.tokenAddress,
+    //   // token2.tokenAddress.tokenAddress,
+    //   //"swapAmount" is the amount of the first token that the user wants to swap with the second token.
+    //   swapAmount
+    // );
     try {
       // Call the connectingWithSingleSwapToken function from the imported appFeatures file
       let singleSwapToken;
@@ -251,27 +142,27 @@ export const SwapTokenContextProvider = ({ children }) => {
       dai = await connectingWithDAIToken();
 
       console.log(singleSwapToken);
-      const decimals0 = 18;
-      const inputAmount = swapAmount;
-      const amountIn = ethers.utils.parseUnits(
-        inputAmount.toString(),
-        decimals0
-      );
+      // console.log(weth);
+      // console.log(dai);
+
+      // const decimals0 = 18;
+      // const inputAmount = swapAmount;
+      const amountIn = 10n ** 18n;
 
       await weth.deposit({ value: amountIn });
-      console.log(amountIn);
+      // console.log(amountIn);
       await weth.approve(singleSwapToken.address, amountIn);
-      //SWAP
-      const transaction = await singleSwapToken.swapExactInputSingle(
-        token1.tokenAddress.tokenAddress,
-        token2.tokenAddress.tokenAddress,
+      // //SWAP
+    await singleSwapToken.swapExactInputSingle(
+      //   token1.tokenAddress.tokenAddress,
+      //   token2.tokenAddress.tokenAddress,
         amountIn,
         {
           gasLimit: 300000,
         }
       );
-      await transaction.wait();
-      console.log(transaction);
+      // await transaction.wait();
+      // console.log(transaction);
       const balance = await dai.balanceOf(account);
       const transferAmount = BigNumber.from(balance).toString();
       const ethValue = ethers.utils.formatEther(transferAmount);
@@ -282,23 +173,26 @@ export const SwapTokenContextProvider = ({ children }) => {
     }
   };
 
+  // useEffect(() => {
+  //   singleSwapToken();
+  // }, []);
+
   // Return the context provider with the state variables and functions passed as values
   return (
     <SwapTokenContext.Provider
       value={{ 
         account,
         singleSwapToken,
-        // connectWallet,
+        connectWallet,
         // getPrice,
         // swapUpdatePrice,
         // createLiquidityAndPool,
         // getAllLiquidity,
-        // account,
         weth9,
         dai,
         networkConnect,
         ether,
-        // tokenData,
+        tokenData,
         // topTokensList,
       }}
     >

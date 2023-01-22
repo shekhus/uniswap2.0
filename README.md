@@ -158,5 +158,35 @@ FetchUserData (portfolio, balance....) ,write a function GET USER ACCOUNT,CREATE
     fetchingData();
   }, []);
 
-  ===NavBar===
-  import /Context/SwapContext and make changes to display current account 
+  ===NavBar
+  import /Context/SwapContext and make changes to display 
+  current account & networkConnect,
+  connectWallet,tokenData
+
+& pass it to 
+===TokenList
+TokenList {el.name},{el.symbol} & {el.tokenBalance}
+add a function to prvent repeatation of the tokenList in the menu 
+
+We have written the fetchingData function 
+Now write a function for SWAP 
+
+=== swapContext.js
+ // SINGLE SWAP TOKEN
+       // Call the connectingWithSingleSwapToken function from the imported appFeatures file
+  // deposit the input amount to weth
+  // approve the singleSwapToken for the amount
+  // get the balance of dai
+
+
+===HeroSection 
+ import /Context/SwapContext and make changes to display SwapTokenContext
+  onClick={() =>
+              singleSwapToken({ & connectWallet 
+
+===Liquidity.sol 
+Every liquidity in the exchange has unique identity , hence inheriting ERC721 to identify inherent proprties use NFT
+
+===liquidity.js 
+npm uninstall @openzeppelin/contracts   
+npm install @openzeppelin/contracts@3.4.2

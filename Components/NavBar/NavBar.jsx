@@ -11,7 +11,7 @@ import { Model, TokenList } from "../index";
 import { SwapTokenContext } from "../../Context/SwapContext";
 
 const NavBar = () => {
-  const { ether, account, networkConnect} =
+  const { ether, account, networkConnect,connectWallet,tokenData} =
   useContext(SwapTokenContext);
   const menuItems =[
 {
@@ -66,7 +66,7 @@ const [openTokenBox, setOpenTokenBox] = useState(false);
          <div className={Style.NavBar_box_right_box_img}>
            <Image src={images.ether} alt="NetWork" height={30} width={30} />
          </div>
-         <p>Network Name</p>
+         <p>{networkConnect}</p>
        </div>
                 {
                   account?(
@@ -76,18 +76,15 @@ const [openTokenBox, setOpenTokenBox] = useState(false);
                  <button onClick={() => setOpenModel(true)}>Connect</button>
                       )
                 }
-
          {openModel && (
-            <Model setOpenModel={setOpenModel} connectWallet="Connect" />
+            <Model setOpenModel={setOpenModel} connectWallet={connectWallet} />
           )}
-
-
               </div>
             </div>
 
-            {/* //TOTENLIST COMPONENT */}
+            {/* //TOKENLIST COMPONENT */}
       {openTokenBox && (
-        <TokenList tokenDate="{tokenData}" setOpenTokenBox={setOpenTokenBox} />
+        <TokenList tokenData={tokenData} setOpenTokenBox={setOpenTokenBox} />
       )}
          </div>
     
